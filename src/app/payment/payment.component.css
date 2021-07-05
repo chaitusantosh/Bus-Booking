@@ -1,0 +1,180 @@
+form {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px
+}
+
+.final {
+    position: relative;
+    width: 600px;
+    padding: 20px;
+    height: 100%;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    margin-right: 150px;
+    background-color: rgba(185, 250, 255, 0.856);
+    text-align: center;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 450px
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.button-group input:disabled {
+    background-color: rgb(110, 223, 185);
+    border-color: aquamarine;
+    color: #333;
+}
+
+.button-group input:enabled {
+    background-color: rgb(29, 192, 102);
+    color: rgb(255, 255, 255);
+}
+
+.inline {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    /* flex-direction: row; */
+    /* 
+    margin-bottom: 10px; */
+}
+
+.inline input {
+    border-radius: 5px;
+    border: 2px solid rgb(255, 255, 255);
+    padding: 5px;
+    /* content: attr(placeholder); */
+}
+
+
+/* 
+input[type="month"]::before {
+    color: #aaa;
+    width: 100%;
+}
+
+input[type="month"]:focus::before,
+input[type="month"]:active::before {
+    width: 0%;
+} */
+
+.inline input:focus {
+    outline: none !important;
+    border: 2px solid rgb(0, 195, 255);
+}
+
+.textinput {
+    width: 250px;
+}
+
+
+/* .space {
+    margin-left: 80px;
+} */
+
+.left {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.box {
+    margin-bottom: 10px;
+}
+
+.card_type {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.card_type input {
+    margin: 5px 5px auto 10px;
+}
+
+.x {
+    border-radius: 100%;
+    width: 1%;
+    height: 1%;
+}
+
+input[type="radio"]:checked {
+    background-color: rgb(141, 255, 246);
+}
+
+.form-control.ng-invalid.ng-dirty.ng-required {
+    border: 2px solid red;
+}
+
+.flex {
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+
+/* width: 200px;
+    height: 200px; */
+
+
+/* position: absolute;
+    left: 45%;
+    top: 100%; */
+
+
+/* transform: translate(-50%, -50%);
+    margin: 20px auto; */
+
+
+/* canvas {
+    width: 50px;
+    height: 50px;
+} */
+
+#test {
+    display: none;
+}
+
+
+/* p {
+    background-image: url('Tandc.jpg');
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+} */
+
+#none {
+    display: none;
+}
+
+p {
+    width: 300px;
+    height: 300px;
+    background-image: url('Navbar.jpg');
+    background-size: cover;
+}
+
+.Reset_button {
+    background-color: black;
+    color: aliceblue;
+}
+
+
+/* .inline div {
+    display: flex;
+    justify-content: space-between;
+} */
+
+@media (max-width: 1300px) {
+    .final {
+        /* margin: 50px auto 50px auto; */
+        float: none;
+        width: 80%;
+        margin: 50px auto;
+    }
+}

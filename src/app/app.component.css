@@ -1,0 +1,28 @@
+/* .back {
+    background-color: #000133;
+    display: flex;
+    justify-content: space-between;
+} */
+
+.text {
+    color: #ffffff;
+}
+
+footer {
+    width: 80%;
+    margin: 400px auto auto auto;
+}
+
+
+/* img {
+    width: 450px;
+    height: 100px;
+} */
+
+
+/* @media (max-width: 767px) {
+    img {
+        width: 200px;
+        height: 50px;
+    }
+} */

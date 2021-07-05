@@ -1,0 +1,76 @@
+div {
+    width: 250px;
+    float: right;
+    margin: 150px 150px auto auto;
+    padding-bottom: 10px;
+    background-color: rgba(185, 250, 255, 0.856);
+    text-align: center;
+    border-radius: 5px;
+}
+
+h2 {
+    margin: 30px auto 15px auto;
+    font-family: "Gill Sans", sans-serif;
+}
+
+form {
+    width: 80%;
+    margin: auto;
+}
+
+form .btn {
+    margin-bottom: 20px;
+}
+
+.error {
+    color: red;
+}
+
+a {
+    text-decoration: none;
+    margin-bottom: 50px;
+}
+
+a:hover {
+    color: #0003ca;
+}
+
+.button {
+    background-color: #000133;
+    color: aliceblue;
+}
+
+
+/* footer {
+    margin-top: 600px;
+    width: 100%;
+    color: bisque;
+    background-color: #000133;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer a {
+    color: bisque;
+}
+
+footer a:hover {
+    color: cornflowerblue
+} */
+
+@media (max-width: 1200px) {
+    div {
+        margin: 150px 100px 50px auto;
+        float: right;
+    }
+}
+
+
+/* 
+@media (max-width: 767px) {
+    div {
+        margin: 50px auto 50px 100px;
+        float: right;
+    }
+}
+ */

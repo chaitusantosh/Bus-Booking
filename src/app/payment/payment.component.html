@@ -1,0 +1,130 @@
+<!-- <div *ngFor="let x of passenger_details.passengers| keyvalue">
+    <p>Name:{{x.value}} Seat: {{x.key}}</p>
+</div> -->
+<div class="left">
+    <h3>From : {{passenger_details.from}}</h3>
+    <h3>To : {{passenger_details.to}}</h3>
+    <h3>Date of Journey : {{passenger_details.date}}</h3>
+</div>
+
+<!-- <div class="left">
+    <p>From : {{passenger_details.from}}</p>
+    <p>To : {{passenger_details.to}}</p>
+    <p>Date of Journey : {{passenger_details.date}}</p>
+    <p>Total Amount : {{passenger_details.fare}}</p>
+</div> -->
+<!-- <img  src="../../../../Navbar.jpg"> -->
+<!-- <p></p> -->
+<img id="test" src="Navbar.jpg">
+<img id="none" src="Tandc.jpg">
+<!-- <p></p> -->
+<!-- <div *ngFor="let x of passenger_details|keyvalue">
+    <p>Fare: {{x.value}}</p>
+    <p>From: {{x.key}}</p>
+    <p>To: {{x.to}}</p>
+</div> -->
+<div class="final">
+    <!-- <form #paymentform="ngForm">
+        <div class="inline"><label>Card Type</label>
+            <div>
+                <input required class="space" type="radio" name="cardType" value="Visa" [(ngModel)]="cardType"><label>Visa</label>
+                <input required class="space" type="radio" name="cardType" value="MasterCard" [(ngModel)]="cardType"><label>MasterCard</label>
+            </div>
+        </div>
+
+        <div class="inline"><label>Card Number</label>
+            <input required class="form-control textinput" minlength=16 maxlength=16 type="text">
+        </div>
+
+        <div class="inline"><label>Name on Card</label>
+            <input required class="form-control textinput" type="text">
+        </div>
+
+        <div class="inline"><label>CVV</label>
+            <input required class="form-control textinput" minlength=3 maxlength=3 type="text">
+        </div>
+
+        <div class="inline"><label>Expiry</label>
+            <input required class="form-control textinput" type="month" min="{{currentDate|date:'yyyy-MM'}}">
+        </div>
+
+
+        <button class="button btn btn-success" [disabled]="!paymentform.valid" (click)="paynow()">Pay Now</button>
+    </form> -->
+    <form #paymentform="ngForm" (submit)="paynow()">
+        <div class="qr">
+            <qrcode [qrdata]="qrdata" [width]="150" [level]="'M'"></qrcode>
+        </div>
+        <!-- <p class="text-danger">Note: All fields are required</p> -->
+        <h4>Total Amount to be paid {{passenger_details.fare | currency:'INR'}}
+        </h4>
+        <h6>Transaction ID {{tran_id}}</h6>
+        <!-- <div class="inline">
+            <label>Card Type</label>
+            <div>
+                <input required class="form-control x" type="radio" name="cardType" value="Visa" [(ngModel)]="cardType"><label>Visa</label>
+                <input required class="form-control x" type="radio" name="cardType" value="MasterCard" [(ngModel)]="cardType"><label>MasterCard</label>
+            </div>
+        </div> -->
+        <div required class="card_type flex">
+            <label>Card Type</label>
+            <div class="card_type">
+                <input type="radio" class="form-control x" [(ngModel)]="card_Type" id="Visa" name="cardtype" value="Visa">
+                <label>Visa</label>
+                <input type="radio" class="form-control x" [(ngModel)]="card_Type" id="MasterCard" name="cardtype" value="MasterCard">
+                <label>MasterCard</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <input placeholder="Card Number" required minlength=16 maxlength=16 pattern="^[0-9]*$" [(ngModel)]="card_number" name="cardnumber" #cardnumber="ngModel" type="text" class="form-control box" id="cardnumber">
+            <div class="error" *ngIf="cardnumber.touched&&!cardnumber.valid">
+                <div *ngIf="cardnumber.errors?.required">Please enter Card Number
+                </div>
+                <div *ngIf="cardnumber.errors?.pattern">Please enter valid Card Number
+                </div>
+                <div *ngIf="cardnumber.errors?.minlength ||
+                    cardnumber.errors?.maxlength">Invalid card number</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input placeholder="Name on Card" required pattern="^[a-zA-Z ]*$" [(ngModel)]="card_name" name="cardname" #cardname="ngModel" type="text" class="form-control box" id="cardname">
+            <div class="error" *ngIf="cardname.touched&&!cardname.valid">
+                <div *ngIf="cardname.errors?.required">Please enter Your Name on Card
+                </div>
+                <div *ngIf="cardname.errors?.pattern">Please enter valid Name
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input required minlength=3 maxlength=3 pattern="^[0-9]*$" [(ngModel)]="card_cvv" name="cardcvv" #cardcvv="ngModel" type="password" class="form-control box" id="cardcvv" placeholder="CVV">
+            <div class="error" *ngIf="cardcvv.touched&&!cardcvv.valid">
+                <div *ngIf="cardcvv.errors?.required">Please enter CVV</div>
+                <div *ngIf="cardcvv.errors?.pattern">Please enter valid CVV</div>
+                <div *ngIf="cardcvv.errors?.minlength ||
+                    cardcvv.errors?.maxlength">Invalid CVV</div>
+            </div>
+        </div>
+        <!-- <div class="form-group inline">
+            <label>Expiry</label>
+            <input required class="form-control textinput" type="month" min="{{currentDate|date:'yyyy-MM'}}">
+        </div> -->
+        <div class="form-group inline">
+            <label>Expiry Date</label>
+            <input required [(ngModel)]="expiry_date" name="expirydate" #expirydate="ngModel" placeholder="MM/YYYY" type="month" min="{{currentDate|date:'yyyy-MM'}}" class="box" id="expirydate">
+        </div>
+        <div class="error" *ngIf="expirydate.touched">
+            <div *ngIf="expirydate.errors?.required">Please enter Expiry Date
+            </div>
+        </div>
+        <div class="form-group button-group">
+            <input type="submit" class="btn btn-success" [disabled]="!paymentform.valid">
+            <button type="reset" class="btn Reset_button">Reset</button>
+        </div>
+    </form>
+
+</div>
+
+
+
+<!-- <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="value">
+</ngx-qrcode> -->

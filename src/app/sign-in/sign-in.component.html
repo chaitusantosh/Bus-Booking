@@ -1,0 +1,17 @@
+<div>
+    <h2>Sign In</h2>
+    <p *ngIf="access==1" class="error">Name and password cannot be empty</p>
+    <p *ngIf="access==2" class="error">Invalid name or password</p>
+    <form (submit)="signin()">
+        <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Enter name"><br>
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Enter password"><br>
+        <input class="button btn" type="submit" value="Sign In">
+    </form>
+    <a routerLink="signup">Create Account</a>
+</div>
+<!-- <footer>
+    <p>Copyright &copy; Blue Bus</p>
+    <a href="https://www.facebook.com/">Facebook</a>
+    <a href="https://www.youtube.com">Youtube</a>
+    <a href="https://www.twitter.com">Twitter</a>
+</footer> -->

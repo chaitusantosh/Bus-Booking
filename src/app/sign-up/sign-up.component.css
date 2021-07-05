@@ -1,0 +1,98 @@
+.signup {
+    width: 350px;
+    height: auto;
+    float: right;
+    margin: 100px 150px auto auto;
+    background-color: rgba(185, 250, 255, 0.856);
+    text-align: center;
+    border-radius: 5px;
+    padding-top: 10px;
+}
+
+h2 {
+    margin: 20px auto 15px auto;
+    /* margin-bottom: 15px;
+    margin-top: 20px; */
+    font-family: "Gill Sans", sans-serif;
+}
+
+form {
+    width: 80%;
+    margin: 20px auto auto auto;
+}
+
+input {
+    margin: 5px auto 10px auto;
+    /* margin-bottom: 10px; */
+}
+
+input[type="radio"]:checked {
+    background-color: rgb(141, 255, 246);
+}
+
+.form-control.ng-invalid.ng-dirty.ng-required {
+    border: 2px solid red;
+}
+
+.error {
+    color: rgb(255, 0, 0);
+    margin-top: -10px;
+    /* margin-bottom: 5px; */
+}
+
+.dateofbirth {
+    margin-top: 5px;
+}
+
+.gender {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.gender input {
+    margin: 5px 5px auto 10px;
+    border-radius: 100%;
+    width: 1%;
+}
+
+.button {
+    margin-bottom: 20px;
+    background-color: rgb(110, 223, 185);
+}
+
+.button:enabled {
+    background-color: #000133;
+    color: aliceblue;
+}
+
+
+/* footer {
+    margin-top: 600px;
+    width: 100%;
+    color: bisque;
+    background-color: #000133;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+footer a {
+    color: bisque;
+}
+
+footer a:hover {
+    color: cornflowerblue
+} */
+
+@media (max-width: 767px) {
+    .signup {
+        margin: 50px auto 50px auto;
+        float: none;
+    }
+}
+
+@media (max-width:1200px) {
+    .signup {
+        margin: 50px auto 50px auto;
+        float: none;
+    }
+}

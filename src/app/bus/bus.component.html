@@ -1,0 +1,140 @@
+<h5>Hi <span>{{title}}!</span></h5>
+<div class="user">
+    <button title="Coupons" (click)="coupons()"><i class="fa fa-gift"
+            aria-hidden="true"></i>Coupons</button>
+    <button title="Bookings" (click)="bookings()"> <i class="fa
+            fa-ticket"></i>Bookings</button>
+    <button title="Logout" (click)="logout()"><i class="fa
+            fa-sign-out"
+            aria-hidden="true"></i>Logout</button>
+</div>
+<table *ngIf="coupon" class="table">
+    <tbody>
+        <tr>
+            <td>New user? Get 15% Off on your bookings... Apply the coupon code while selecting seats</td>
+            <td>"WELCOME2BB"</td>
+        </tr>
+        <tr>
+            <td>Travelling with family or friends? If you are a group of 5 or more apply this to avail 10% Off</td>
+            <td>"FABFIVE"</td>
+        </tr>
+    </tbody>
+</table>
+
+<table *ngIf="bookings_boolean" class="table table-dark">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-info" *ngFor="let plan of (plans)">
+            <td>{{plan.from}}</td>
+            <td>{{plan.to}}</td>
+            <td>{{plan.date}}</td>
+            <td>
+                <div *ngFor="let passenger of plan.passengers|keyvalue">Name:{{passenger.value}} Seat: {{passenger.key}}
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<!-- <tr *ngFor="let x of (seats_numbers)">{{x}}</tr> -->
+<!-- <td *ngFor="let y of user_plan|keyvalue">{{y.key}} {{y.value}}</td> -->
+<!-- <div *ngFor="let x of passengers| keyvalue">
+    <p>Name:{{x.value}} Seat: {{x.key}}</p>
+</div> -->
+<!-- <p *ngFor="let y of (x)">{{y.passengers}}</p> -->
+
+
+
+
+
+
+<div class="bus" *ngIf="set!=3">
+    <form #form="ngForm" (submit)="bus()">
+        <div>
+            <label>From</label>
+            <select [disabled]="disable_locations" class="form-control" name="from" [(ngModel)]="from">
+                <option *ngFor="let location of (locations)">{{location}}</option>
+            </select>
+        </div>
+        <div>
+            <label>To</label>
+            <select [disabled]="disable_locations" class="form-control" name="to" [(ngModel)]="to">
+                <option *ngFor="let location of (locations)">{{location}}</option>
+            </select>
+        </div>
+        <div> <label>Select Date</label><input class="form-control" name="date" min="{{currentDate|date:'yyyy-MM-dd'}}" type="date" [(ngModel)]="date">
+        </div>
+        <div> <label>Plan your Dream Journey</label><input class="form-control
+                submit" type="submit" value="Search buses">
+        </div>
+    </form>
+    <div class="button-group">
+        <button type="button" class="btn clear_button" (click)="edit()">Edit</button>
+        <button type="button" class="btn clear_button" (click)="clear_locations()">Clear</button>
+    </div>
+</div>
+<table *ngIf="set==1" class="table table-dark">
+    <thead>
+        <tr>
+            <th>Types</th>
+            <th>Fare</th>
+            <th>Seats Available</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Book seats</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-info" *ngFor="let bus of (buses)">
+            <td>{{bus.type}}</td>
+            <td>{{bus.fare}}</td>
+            <td>{{bus.seats}}</td>
+            <td>{{bus.departure}}</td>
+            <td>{{bus.arrival}}</td>
+            <td><button class="btn btn-success" (click)="seats(bus)">View Seats</button></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- <app-seats *ngIf="set==3" [details_bus_component]="send"></app-seats> -->
+<!-- <table class="seats">
+    <tr>
+        <td *ngFor="let x of Number" [ngClass]="{'down':x%2===0}" class="aisle">{{x}}</td>
+    </tr>
+</table> -->
+
+<table *ngIf="set==2" class="table table-dark">
+    <thead>
+        <tr>
+            <th>Types</th>
+            <th>Fare</th>
+            <th>Seats Available</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Book seats</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-info" *ngFor="let bus of (buses_available)">
+            <td>{{bus.type}}</td>
+            <td>{{bus.fare}}</td>
+            <td>{{bus.available}}</td>
+            <td>{{bus.departure}}</td>
+            <td>{{bus.arrival}}</td>
+            <td><button class="btn btn-success" (click)="seats(bus)">View Seats</button></td>
+        </tr>
+    </tbody>
+</table>
+<footer>
+    <p>Copyright &copy; Blue Bus</p>
+    <a href="https://www.facebook.com/">Facebook</a>
+    <a href="https://www.youtube.com">Youtube</a>
+    <a href="https://www.twitter.com">Twitter</a>
+</footer>

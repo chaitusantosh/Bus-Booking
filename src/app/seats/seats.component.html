@@ -1,0 +1,82 @@
+<div class="overlay">
+    <div id="source_destination">
+        <p>From : <span>{{selected_bus.from}}</span></p>
+        <p>To : <span>{{selected_bus.to}}</span></p>
+        <p>Type : <span>{{selected_bus.type}}</span></p>
+    </div>
+    <div class="bus">
+        <table>
+            <p></p>
+            <tr>
+                <td *ngFor="let number of Numbers" [ngClass]="{'down':number%2===0,'black':busseat[0].includes(number),'success':selectedseat.includes(number)}" (click)="clickSeat($event)" valign="center" id={{number}}>
+                    <div>{{number}}</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="summary">
+        <div class="details">
+            <div class="information"><label>Selected seats</label>
+                <div class="select_seat">
+                    <p *ngFor="let select of selectedseat">{{select}}</p>
+                </div>
+            </div>
+            <div class="information">
+                <label>Fare</label>
+                <p>{{selected_bus.fare}}</p>
+            </div>
+            <div class="information"><label>Price</label>
+                <p>{{selected_bus.fare*count}}</p>
+            </div>
+
+            <div class="information"><label>GST</label>
+                <p>{{count*(10*selected_bus.fare/100)}}</p>
+            </div>
+            <div *ngIf="promoapplied==0" class="information"><label>Total</label>
+                <p>{{(selected_bus.fare*count)+count*(10*selected_bus.fare/100)}}</p>
+            </div>
+            <div *ngIf="promoapplied==1" class="information"><label>Discount</label>
+                <p>-{{((selected_bus.fare*count)+count*(10*selected_bus.fare/100))*(15/100)}}</p>
+                <label>Total</label>
+                <p>{{((selected_bus.fare*count)+count*(10*selected_bus.fare/100))-((selected_bus.fare*count)+count*(10*selected_bus.fare/100))*(15/100)}}</p>
+            </div>
+            <div *ngIf="promoapplied==2" class="information"><label>Discount</label>
+                <p>-{{((selected_bus.fare*count)+count*(10*selected_bus.fare/100))*(10/100)}}</p>
+                <label>Total</label>
+                <p>{{((selected_bus.fare*count)+count*(10*selected_bus.fare/100))-((selected_bus.fare*count)+count*(10*selected_bus.fare/100))*(10/100)}}</p>
+            </div>
+            <div class="information"><input placeholder="Coupon code" class="form-control" type="text" name="coupon" [(ngModel)]="coupon">
+                <button class="btn btn-primary" (click)="promo()">Apply Promo</button></div>
+            <div class="error" *ngIf="promo_error===1">Sorry! You have already used Blue Bus Services</div>
+            <div class="error" *ngIf="promo_error===2">Please select 5 or more to avail this offer</div>
+
+            <form #passengerform="ngForm">
+                <div *ngFor="let select of selectedseat">
+                    <div class="passenger">
+                        <!-- <label>Name of Passenger</label> -->
+                        <!-- <input required class="form-control" type="text" [(ngModel)]="passengers[select]"> -->
+                        <input placeholder="Passenger Name" required pattern="^[a-zA-Z ]*$" [(ngModel)]="passengers[select]" name="passengername{{select}}" #passengername="ngModel" type="text" class="form-control box" id="passengername{{select}}">
+                        <div class="error" *ngIf="passengername.touched&&!passengername.valid">
+                            <div *ngIf="passengername.errors?.required">Please enter Passenger Name
+                            </div>
+                            <div *ngIf="passengername.errors?.pattern">Please enter valid Name
+                            </div>
+                        </div>
+                        <label class="gender">Gender</label>
+                        <label>Male</label><input class="mar" type="radio" name="{{select}}" value="male">
+                        <label>Female</label><input type="radio" name="{{select}}" value="female">
+                        <!-- <label>Others</label><input type="radio" name="{{select}}" value="others"> -->
+                    </div>
+                </div>
+            </form>
+
+            <div *ngIf="count"> <button type="button" [disabled]="!passengerform.valid" class="btn btn-primary" (click)="payment((selected_bus.fare*count)+count*(10*selected_bus.fare/100))">Continue
+                    to Payment</button>
+            </div>
+            <!-- <div *ngIf="!count"> <button class="btn btn-primary" type="button">Continue
+          to Payment</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- <app-payment *ngIf="passenger_details" [passenger_details]="passenger_details"></app-payment> -->

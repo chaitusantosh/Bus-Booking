@@ -1,0 +1,242 @@
+/* td {
+    border: 2px solid rgb(255, 149, 149);
+    width: 50px;
+    height: 30px;
+    background-image: url('seat.jpg');
+    background-size: cover;
+    margin: 12px 12px 12px 12px;
+    padding: 12px 12px 12px 12px;
+} */
+
+span {
+    font-size: 26px;
+    font-family: 'Neuton', serif;
+    font-weight: bolder;
+    color: #3d383d;
+}
+
+#source_destination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bus {
+    border: 3px solid #000133;
+    background-color: #95dcee96;
+    /* border-left: 30px solid #000133; */
+    border-radius: 5px;
+    width: fit-content;
+    /* margin-left: 180px;
+    margin-top: 40px; */
+    margin: 40px auto auto 180px;
+    padding: 20px 40px 0px 10px;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.information input,
+.information button {
+    font-size: 14px;
+}
+
+table p {
+    margin-right: 30px;
+    width: 50px;
+    height: 50px;
+    background-image: url('Driver2.jpg');
+    background-size: cover;
+}
+
+.bus table {
+    display: flex;
+    width: 570px;
+    padding: 10px;
+}
+
+.bus table tr {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 240px;
+}
+
+td {
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    background-image: url('empty.jpg');
+    background-size: cover;
+    cursor: pointer;
+}
+
+td div {
+    font-size: 12px;
+}
+
+td:hover {
+    /* background-color: blue;----- */
+    background-image: url('blue_seat.jpg');
+    background-size: cover;
+}
+
+.success {
+    /* background-color: green; */
+    background-image: url('green_.jpg');
+    background-size: cover;
+    /* background-image: url('../../assets/images/green_seat.png'); */
+}
+
+.success:hover {
+    /* background-color: green; */
+    background-image: url('green_.jpg');
+    background-size: cover;
+}
+
+.fail {
+    /* background-color: white; */
+    background-image: url('empty.jpg');
+    background-size: cover;
+}
+
+.down {
+    margin-bottom: 20px;
+}
+
+.black {
+    /* background-color: rgb(255, 63, 63); */
+    pointer-events: none;
+    background-image: url('red_seat.jpg');
+    background-size: cover;
+}
+
+.black:hover {
+    /* background-color: rgb(255, 63, 63);------- */
+    pointer-events: none;
+}
+
+.summary {
+    width: 340px;
+    float: right;
+    margin: -290px 200px 50px 0px;
+    /* margin-right: 200px;
+    margin-top: -200px; */
+    background-color: rgba(185, 250, 255, 0.856);
+    border-radius: 5px;
+}
+
+.details {
+    width: 80%;
+    margin: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.select_seat {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-end;
+    overflow-y: auto;
+}
+
+.information {
+    display: flex;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}
+
+.gender {
+    margin-right: 20px;
+}
+
+.select_seat p {
+    display: inline;
+    margin-right: 5px;
+}
+
+p {
+    color: blue;
+}
+
+button {
+    margin-left: 30px;
+}
+
+.passenger {
+    margin-bottom: 10px;
+}
+
+label {
+    color: rgb(71, 50, 50);
+}
+
+
+/* .right {
+    margin-bottom: 30px;
+} */
+
+
+/* table {
+    border-collapse: separate;
+    border-spacing: 5px;
+    *border-collapse: expression('separate', cellSpacing='5px');
+    table-layout: fixed;
+} */
+
+
+/* div {
+    width: 100px;
+    height: 100px;
+    background-image: url('../../Back.jpg');
+} */
+
+@media (max-width: 768px) {
+    .bus {
+        margin-left: -70px;
+        margin-top: 200px;
+        transform: rotate(90deg);
+    }
+    td div {
+        transform: rotate(-90deg);
+    }
+    table p {
+        background-image: url('Driver_Top_view.jpg');
+        background-size: cover;
+        transform: rotate(-90deg);
+        /* height: 100px; */
+    }
+    .summary {
+        float: none;
+        margin-top: 200px;
+        margin-left: 70px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1350px) {
+    .summary {
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* 
+@media (max-width: 1400px) {
+    .summary {
+        float: none;
+        margin: 60px auto 20px 300px;
+    }
+} */

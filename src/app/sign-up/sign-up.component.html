@@ -1,0 +1,114 @@
+<!-- <button (click)=get()>Get</button>
+<div *ngFor="let user of (response)">
+    {{user.name}} {{user.email}} {{user.mobile}} {{user.password}} {{user.sex}} {{user.dateofbirth}}
+</div> -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
+<div class="signup">
+    <h2>Sign Up</h2>
+
+    <form #form="ngForm" (submit)="adduser()">
+
+        <!-- Name -->
+        <input required type="text" pattern="^[a-zA-Z ]*$" #username="ngModel"
+            class="form-control" [(ngModel)]="name" name="name"
+            placeholder="Name">
+        <div class="error" *ngIf="username.touched&&!username.valid">
+            <div *ngIf="username.errors?.required">Name cannot be empty</div>
+            <div *ngIf="username.errors?.pattern">Please enter valid Name</div>
+        </div>
+        <!-- <div class="error" *ngIf="username.errors?.pattern">
+            Enter a valid name.
+        </div> -->
+        <!-- Name ends -->
+
+        <!-- Email -->
+        <input required type="email" email #prmEmail="ngModel"
+            class="form-control" [(ngModel)]="email" name="email"
+            placeholder="Email">
+        <div class="error" *ngIf="prmEmail.touched&&!prmEmail.valid">
+            <div *ngIf="prmEmail.errors?.required">Email cannot be empty</div>
+            <div *ngIf="prmEmail.errors?.email">Please enter valid email</div>
+        </div>
+        <!-- <div class="error" *ngIf="prmEmail.errors?.email">
+            Email not valid.
+        </div> -->
+        <!-- Email ends-->
+
+        <!-- Mobile Number -->
+        <input required type="text" minlength=10 maxlength=10 pattern="^[0-9]*$"
+            #usermobile="ngModel" class="form-control" [(ngModel)]="mobile"
+            name="mobile" placeholder="Mobile (without 0 or +91)">
+        <div class="error" *ngIf="usermobile.touched&&!usermobile.valid">
+            <div *ngIf="usermobile.errors?.required">Mobile number cannot be
+                empty
+            </div>
+            <div *ngIf="usermobile.errors?.pattern">Please enter valid Number</div>
+            <div *ngIf="usermobile.errors?.minlength ||
+                usermobile.errors?.maxlength">Invalid Number</div>
+        </div>
+
+        <!-- <div *ngIf="usermobile.errors?.pattern">
+            Enter a valid number.
+        </div> -->
+        <!-- Mobile Number ends -->
+
+        <!-- Gender -->
+        <!-- <input type="text" class="form-control" [(ngModel)]="sex" name="sex" placeholder="Gender">
+        <input type="radio" class="form-control" [(ngModel)]="sex" name="sex"> -->
+        <div required class="gender">
+            <input type="radio" class="form-control" [(ngModel)]="sex" id="male"
+                name="sex" value="male">
+            <label>Male</label>
+            <input type="radio" class="form-control" [(ngModel)]="sex"
+                id="female" name="sex" value="female">
+            <label>Female</label>
+            <input type="radio" class="form-control" [(ngModel)]="sex"
+                id="other" name="sex" value="other">
+            <label>Other</label>
+        </div>
+
+        <!-- Gender ends-->
+
+        <!-- Date of Birth -->
+
+        <div class="dateofbirth"> <label>Date of Birth</label>
+            <input required type="date" #ofbirth="ngModel" max="2003-12-31"
+                class="form-control" [(ngModel)]="dateofbirth"
+                name="dateofbirth" placeholder="dd/mm/yyyy"></div>
+
+        <div *ngIf="ofbirth.touched">
+            <div class="error" *ngIf="ofbirth.errors?.required">
+                Date of Birth is required
+            </div>
+        </div>
+        <!-- Date of Birth ends-->
+
+        <!-- Password -->
+        <input required type="password" minlength=8 pattern="^\S+$"
+            #userpassword="ngModel" class="form-control" [(ngModel)]="password"
+            name="password" placeholder="Password">
+        <!-- <div class="error" *ngIf="userpassword.errors?.pattern">
+            No Spaces
+        </div> -->
+        <div class="error" *ngIf="userpassword.touched&&!userpassword.valid">
+            <div *ngIf="userpassword.errors?.required">Password cannot be empty</div>
+            <div *ngIf="userpassword.errors?.pattern">No spaces</div>
+            <div *ngIf="userpassword.errors?.minlength">Password must atleast
+                contain 8 characters</div>
+        </div>
+        <!-- Password ends-->
+
+        <input class="button btn" [disabled]="!form.valid" type="submit"
+            value="Sign Up">
+    </form>
+</div>
+
+
+
+
+<!-- <footer>
+    <p>Copyright &copy; Blue Bus</p>
+    <a href="https://www.facebook.com/">Facebook</a>
+    <a href="https://www.youtube.com">Youtube</a>
+    <a href="https://www.twitter.com">Twitter</a>
+</footer> -->
